@@ -53,6 +53,8 @@ function isValid(characters) {
 * only push OPENING.
 * check CLOSING, if it pairs with the last element(matching OPENING) in the stack, pop the last element.
 * return false if the closing bracket shows before opening bracket.
+js
+```
 | Character | Action                      | Stack Before     | Stack After      | Notes                                 |
 |-----------|-----------------------------|------------------|------------------|---------------------------------------|
 | `{`       | Opening → push to stack     | `[]`             | [`{`]            | Save the opening bracket              |
@@ -64,3 +66,4 @@ function isValid(characters) {
 Final Stack: [] (Empty)
 ✅ All brackets matched correctly → Valid
 
+```
