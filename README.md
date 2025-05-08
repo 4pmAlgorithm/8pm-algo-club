@@ -1,12 +1,12 @@
 # 8pm-algo-club
 
-* 05/12/2025 
+## 05/12/2025 
 94. Binary Tree Inorder Traversal
 https://leetcode.com/problems/binary-tree-inorder-traversal/description/
 
 
 
-* 05/05/2025  
+## 05/05/2025  
 20. Valid Parentheses
 
 https://leetcode.com/problems/valid-parentheses/description/
