@@ -1,9 +1,47 @@
 # 8pm-algo-club
 
+## 5/29/2025 Thurs
+https://leetcode.com/problems/climbing-stairs
+70. Climbing Stairs
+
+
+
 ## 05/22/2025 Thurs
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 
 
+```js
+var maxProfit = function(prices) {
+  let result = 0
+
+  for ( let i = 0; i < prices.length; i++) {
+
+        console.log("-----i-----", prices[i])
+
+        let maxJ = 0
+        let profit = 0
+    for (let j = i+1; j < prices.length; j++){
+   
+        if(prices[j] > maxJ){
+            maxJ = prices[j]
+        }
+
+        console.log("-j-", prices[j])
+        console.log("---maxJ--", maxJ)
+
+        profit = maxJ - prices[i]
+        console.log("DDDD", profit)
+    }
+
+    if(profit > result){
+        result = profit
+        }
+    console.log("+++R++", result)
+  }
+  return result
+
+};
+```
 
 
 ## 05/19/2025 Mon
