@@ -1,11 +1,28 @@
 # 8pm-algo-club
 
+## 6/2/2025 Mon
+https://leetcode.com/problems/valid-anagram/description/
+Valid Anagram
+
+
 ## 5/29/2025 Thurs
 https://leetcode.com/problems/climbing-stairs
 70. Climbing Stairs
 
+```js
+var climbStairs = function(n) {
+    let one = 1;
+    let two = 1;
 
-
+    for (let i = 0 ; i < n-1; i ++){
+        console.log(i)
+        let temp = one;
+        one = one + two
+        two = temp
+    }
+    return one
+};
+```
 ## 05/22/2025 Thurs
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 
