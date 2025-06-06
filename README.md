@@ -1,8 +1,181 @@
 # 8pm-algo-club
 
+## ⏱ Time complexity = How many steps the algorithm takes as input size grows.
+
+## 🧠 Space complexity = How much extra memory it uses as input size grows.
+
+
+
+## 6/5
+https://leetcode.com/problems/valid-palindrome/description/
+125. Valid Palindrome
+
+```js
+function isPalindrome(phrase) {
+  const alphanumerics = "abcdefghijklmnopqrstuvwxyz0123456789";
+  const cleaned = [];
+
+  // Step 1: Build cleaned version with only lowercase letters and numbers
+  for (let i = 0; i < phrase.length; i++) {
+    const char = phrase[i].toLowerCase();
+    if (alphanumerics.includes(char)) {
+      cleaned.push(char);
+    }
+  }
+
+  // Step 2: Use two-pointer approach to check palindrome
+  let left = 0;
+  let right = cleaned.length - 1;
+
+  while (left < right) {
+    if (cleaned[left] !== cleaned[right]) {
+      return false;
+    }
+    left++;
+    right--;
+  }
+
+  return true;
+}
+
+// ✅ Try it
+console.log(isPalindrome("A man, a plan, a canal: Panama")); // true
+console.log(isPalindrome("No lemon, no melon")); // true
+console.log(isPalindrome("race a car")); // false
+
+```
+
+
+
 ## 6/2/2025 Mon
 https://leetcode.com/problems/valid-anagram/description/
 Valid Anagram
+
+* most optimal 
+```js
+var isAnagram = function(s, t) {
+    if (s.length !== t.length) return false;
+
+    const count = new Array(26).fill(0);
+    const aCharCode = 'a'.charCodeAt(0);
+
+    for (let i = 0; i < s.length; i++) {
+        count[s.charCodeAt(i) - aCharCode]++;
+        count[t.charCodeAt(i) - aCharCode]--;
+    }
+
+    // If all counts are zero, t is an anagram of s
+    return count.every(c => c === 0);
+};
+```
+
+⏱ Time Complexity: O(n)
+n = length of the strings.
+
+Goes through both strings once → total time = n.
+
+🧠 Space Complexity: O(1)
+Fixed size array of 26 letters (a to z), doesn't grow with input.
+
+✅ Fastest and most memory-efficient version, but assumes only lowercase a–z letters.
+
+
+
+* 
+```js
+var isAnagram = function(s, t) {
+    if (s.length !== t.length) return false;
+    let objs={};
+    let objt={};
+    for(let i=0;i <s.length;i++){
+        if(objs[s[i]]){
+            objs[s[i]]++;
+        }
+        else
+        objs[s[i]]=1;
+    }
+    for(let i=0;i<s.length;i++){
+        if(objt[t[i]]){
+            objt[t[i]]++;
+        }
+        else
+        objt[t[i]]=1;
+    }
+    for(let val in objs){
+        if(objs[val]!=objt[val])return false;
+    }
+    return true;
+};
+```
+⏱ Time Complexity: O(n)
+Goes through both strings → O(n).
+
+🧠 Space Complexity: O(k)
+k = number of unique characters.
+
+Worst case: if every letter is different → extra space grows with input.
+
+✅ Easier to understand and works with any characters (Unicode-friendly), but uses more memory.
+
+*
+```js
+var isAnagram = function(s, t) {
+
+    if(s.length !== t.length){
+        return false
+    } else {
+
+    let dictionary = {}
+
+    for (let i = 0; i < s.length; i++){
+        console.log(s[i])
+        if(dictionary[s[i]]){
+            dictionary[s[i]] +=1
+        }else{
+            dictionary[s[i]] = 1
+        }
+    }
+    console.log(dictionary)
+
+    for (let i = 0; i < t.length; i++){
+        console.log(t[i])
+        if(dictionary[t[i]]){
+            dictionary[t[i]] -=1
+        }else{
+            dictionary[t[i]] = 1
+        }
+    }
+    console.log(dictionary)
+
+    let added = 0
+
+    for (const key in dictionary){
+        if(dictionary.hasOwnProperty(key)){
+            const value = dictionary[key]
+            added += value
+        }
+    }
+
+    if( added === 0 ){
+        return true
+    }
+    }
+
+    return false
+};
+```
+⏱ Time Complexity: O(n)
+Loops through both strings, and a small loop at the end → still O(n).
+
+🧠 Space Complexity: O(k)
+One object instead of two → slightly better space usage than solution #2.
+
+Still depends on unique letters.
+
+✅ Memory-efficient and works with any characters. Clean logic.
+
+
+
 
 
 ## 5/29/2025 Thurs
