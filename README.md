@@ -6,6 +6,70 @@
 
 
 
+
+
+
+
+## 6/12
+https://leetcode.com/problems/contains-duplicate/
+217. Contains Duplicate
+
+
+```js
+
+| Version                 | Time Complexity  | Space Complexity       | Notes                                    |
+|-------------------------|------------------|------------------------|------------------------------------------|
+| `.forEach()` + `.filter()`| ❌ O(n²)      | ❌ O(n²) (temp arrays)  | Very inefficient                        |
+| `Set`                  | ✅ O(n)           | ✅ O(n)                | Best mix of readability & performance    |
+| `Object`               | ✅ O(n)           | ✅ O(n)                | Works                                    |
+
+
+function containsDuplicate (nums) {
+    let isRepeated = false;
+
+    nums.forEach((currentNumber, index) = {
+        const numsNotCurrentNum = nums.filter((num, idx) => num === currentNumber);
+          if (numsNotCurrentNum.length > 1) {
+          isRepeated = true;
+    );
+    return isRepeated;
+}
+
+
+
+var containsDuplicate = function (nums) {
+
+    const set = new Set();
+    for (let i = 0; i < nums.length; i++) {
+        if (set.has(nums[i])) {
+            return true;
+        }
+        else {
+            set.add(nums[i])
+        }
+
+    }
+    return false;
+};
+
+// 
+
+    let obj = {}
+
+    for(let i = 0; i < nums.length; i++){
+        console.log(obj.hasOwnProperty(obj[nums[i]]))
+        if (obj.hasOwnProperty(obj[nums[i]])){
+            return true
+        }
+
+        obj[nums[i]] = 1
+    
+    }
+    console.log(obj)
+    return false
+
+```
+
 ## 6/5
 https://leetcode.com/problems/valid-palindrome/description/
 125. Valid Palindrome
