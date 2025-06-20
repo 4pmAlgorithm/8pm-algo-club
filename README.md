@@ -4,10 +4,42 @@
 
 ## 🧠 Space complexity = How much extra memory it uses as input size grows.
 
+## 6/19
+https://leetcode.com/problems/remove-duplicates-from-sorted-array/?envType=problem-list-v2&envId=array
+26. Remove Duplicates from Sorted Array
+
+```js
+  if (nums.length === 0) return 0;
+
+  let k = 1; // pointer to place the next unique element
+
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] !== nums[i - 1]) {
+      nums[k] = nums[i];
+      k++;
+    }
+  }
+
+  return k;
+```
+//For every new number that’s not equal to the one before, copy it to nums[k] and increment k.
 
 
+## 6/16 
+https://leetcode.com/problems/remove-element/description/?envType=problem-list-v2&envId=array
+27. Remove Element
+```js
+function removeElement(nums, val) {
 
+    let result = 0;
+    for(let i = 0; i < nums.length; i++) {
+        if(nums[i] === val) nums[i] = '_';
+        else result++;
+    }
+    nums.sort((a, b) => a === '_' ? 1 : -1);
+    return result;
 
+```
 
 
 ## 6/12
