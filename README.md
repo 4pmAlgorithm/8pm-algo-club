@@ -4,6 +4,74 @@
 
 ## 🧠 Space complexity = How much extra memory it uses as input size grows.
 
+## 6/26 Thurs
+```js
+function romanToInt(s) {
+    const romanMap = {
+        I: 1,
+        V: 5,
+        X: 10,
+        L: 50,
+        C: 100,
+        D: 500,
+        M: 1000
+    };
+
+    let total = 0;
+
+    for (let i = 0; i < s.length; i++) {
+        let current = romanMap[s[i]];
+        let next = romanMap[s[i + 1]];
+
+        if (next > current) {
+            total += (next - current);
+            i++; // skip next character
+        } else {
+            total += current;
+        }
+    }
+
+    return total;
+}
+
+
+```
+
+
+## 6/23 Mon
+28. Find the Index of the First Occurrence in a String
+
+9. Palindrome Number
+
+```js
+function isPalindrome(x) {
+  let isValid = false;
+  if (x < 0) return isValid;
+  isValid = x.toString() === x.toString().split("").reverse("").join("");
+  return isValid;
+}
+
+console.log("result", isPalindrome(121));
+
+```
+
+```js
+var isPalindrome = function(x) {
+    if(x<0){
+        return false;
+    }
+    const copyOfX = x;
+    let rev = 0;
+    while(x>0){
+        const lastDigit = x%10;
+        x = Math.floor(x/10);
+        rev = rev*10 + lastDigit;
+    }
+    return rev === copyOfX
+};
+```
+
+
 ## 6/19
 https://leetcode.com/problems/remove-duplicates-from-sorted-array/?envType=problem-list-v2&envId=array
 26. Remove Duplicates from Sorted Array
