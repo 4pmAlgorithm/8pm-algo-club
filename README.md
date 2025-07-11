@@ -4,6 +4,93 @@
 
 ## 🧠 Space complexity = How much extra memory it uses as input size grows.
 
+
+## 7/7 Mon
+linked list 
+
+
+```js
+var mergeTwoLists = function(list1, list2) {
+    let joinList = [];
+
+    let current1 = list1;
+    let current2 = list2;
+
+    // Gather all values from both lists
+    while (current1) {
+        joinList.push(current1.val);
+        current1 = current1.next;
+    }
+
+    while (current2) {
+        joinList.push(current2.val);
+        current2 = current2.next;
+    }
+
+    // Sort the array to simulate merging sorted lists
+    joinList.sort((a, b) => a - b);
+
+    // Build new linked list from sorted values
+    let dummy = new ListNode(0);
+    let current = dummy;
+
+    for (let i = 0; i < joinList.length; i++) {
+        current.next = new ListNode(joinList[i]);
+        current = current.next;
+    }
+
+    return dummy.next;
+};
+```
+
+## 6/30 Mon
+
+```js
+var longestCommonPrefix = function(strs) {
+    for ( let i = 0; i < strs.length; i++){
+        let check = 0
+        console.log(check, "-----")
+        for (let j = 0; j < strs[i].length; j++){
+            console.log("---", strs[i][j])
+        }
+    }
+};
+////
+
+function longestCommonPrefix(strs) {
+  if (!strs.length) return "";
+
+  let prefix = strs[0];
+
+  for (let i = 1; i < strs.length; i++) {
+    while (!strs[i].startsWith(prefix)) {
+      prefix = prefix.slice(0, -1);
+      if (prefix === "") return "";
+    }
+  }
+
+  return prefix;
+}
+
+//////
+var longestCommonPrefix = function(strs) {
+    if(!strs.length) return;
+    const firstWord = strs[0];
+    let prefix = "";
+
+    for(let i=0; i<firstWord.length; i++){
+        for(let j=1; j<strs.length; j++){
+            let currentWord = strs[j];
+            if((firstWord[i] !== currentWord[i]) || i > currentWord.length) return prefix;   
+        }
+        prefix += firstWord[i]; 
+    }
+
+    return prefix;
+};
+
+```
+
 ## 6/26 Thurs
 ```js
 function romanToInt(s) {
